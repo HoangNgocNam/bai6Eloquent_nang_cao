@@ -9,12 +9,15 @@
 </head>
 <body>
 <table border="1px">
+    <a href="{{ route("posts.create") }}"> Thêm Mới</a>
     <thead>
     <tr>
         <th>Id</th>
         <th>Tiêu Để</th>
         <th>Nội Dung</th>
+        <th>Thể Loại</th>
         <th>User</th>
+        <th colspan="2">Action</th>
 
     </tr>
     </thead>
@@ -24,7 +27,18 @@
             <td>{{ $post->id }}</td>
             <td>{{ $post->title }}</td>
             <td>{{ $post->content }}</td>
+            <td>
+                @if(count($post->categories) > 0)
+                    @foreach($post->categories as $category)
+                        <p>{{ $category->name }}</p>
+                    @endforeach
+                @else
+                    <p>Chưa Phân loại</p>
+                @endif
+            </td>
             <td>{{ $post->user->name }}</td>
+            <td><a href="{{ route("posts.update", $post->id) }}">Update</a></td>
+            <td><a onclick="return confirm('Mày chắc chưa???')" href="{{ route("posts.delete", $post->id) }}">Delete</a></td>
         </tr>
     @endforeach
     </tbody>

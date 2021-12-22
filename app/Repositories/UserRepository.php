@@ -24,7 +24,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function update($id, $request)
     {
-        // TODO: Implement update() method.
+        $data = $request->only("name","email","password");
+        $this->model-> where('id', $id)
+            ->update($data);
     }
 
     public function getPostOfUser($userId)

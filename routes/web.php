@@ -25,7 +25,7 @@ Route::prefix('/users')->group(function (){
     Route::get('/{id}/delete',[UserController::class,"destroy"])->name("users.delete");
     Route::get('/{id}/detail',[UserController::class,"show"])->name("users.detail");
     Route::get('/{id}/update',[UserController::class,"edit"])->name("users.update");
-    Route::get('/{id}/update',[UserController::class,"update"])->name("users.update");
+    Route::post('/{id}/update',[UserController::class,"update"])->name("users.update");
 });
 Route::prefix('/posts')->group(function (){
     Route::get('/',[PostController::class,"index"])->name("posts.index");
@@ -34,5 +34,5 @@ Route::prefix('/posts')->group(function (){
     Route::get('/{id}/delete',[PostController::class,"destroy"])->name("posts.delete");
     Route::get('/{id}/detail',[PostController::class,"show"])->name("posts.detail");
     Route::get('/{id}/update',[PostController::class,"edit"])->name("posts.update");
-    Route::get('/{id}/update',[PostController::class,"update"])->name("posts.update");
+    Route::post('/{id}/update',[PostController::class,"update"])->name("posts.update");
 });

@@ -1,4 +1,4 @@
-<form action=""method="post">
+<form action="" method="post">
     @csrf
     <input type="text" name="name" placeholder="Nhap ten">
     <input type="text" name="email" placeholder="Nhap Email">

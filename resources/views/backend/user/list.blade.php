@@ -15,7 +15,7 @@
         <th>Id</th>
         <th>Tên</th>
         <th>Email</th>
-        <th>Action</th>
+        <th colspan="3">Action</th>
 
     </tr>
     </thead>
@@ -26,6 +26,8 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td><a href="{{ route("users.detail" ,$user->id ) }}">Detail</a></td>
+            <td><a href="{{ route("users.update" ,$user->id ) }}">Update</a></td>
+            <td><a onclick="return confirm('Chắc choắn chưa ???')" href="{{ route("users.delete" ,$user->id ) }}">Delete</a></td>
         </tr>
     @endforeach
     </tbody>

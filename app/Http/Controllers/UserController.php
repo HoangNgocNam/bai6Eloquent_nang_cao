@@ -44,18 +44,21 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $user = $this->userRepository->getById($id);
+        return view("backend.user.update" ,compact("user"));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $this->userRepository->update($id, $request);
+        return redirect()->route("users.index");
     }
 
 
     public function destroy($id)
     {
-        //
+        $this->userRepository->delete($id);
+        return redirect()->route("users.index");
     }
 }
