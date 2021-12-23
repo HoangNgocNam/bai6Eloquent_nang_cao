@@ -10,9 +10,24 @@
 <body>
 <form action="" method="post">
     @csrf
-    <input type="text" name="title" placeholder="Tiêu Đề">
-    <input type="text" name="content" placeholder="Nội Dung">
-    <input type="text" name="user_id" placeholder="ID" value="1">
+    <input type="text" name="title" placeholder="Tiêu Đề" value="{{ old('title') }}">
+    @error('title')
+    <p style="color: red">{{ $message }}</p>
+    @enderror
+    <input type="text" name="content" placeholder="Nội Dung" value="{{ old('content') }}">
+    @error('content')
+    <p style="color: red">{{ $message }}</p>
+    @enderror
+
+    <select name="user_id">
+        @foreach(\App\Models\User::all() as $user)
+            <option value="{{ $user->id }}">{{ $user->name }}</option>
+        @endforeach
+    </select>
+{{--    <input type="text" name="user_id" placeholder="ID" value="1">--}}
+    @error('user_id')
+    <p style="color: red">{{ $message }}</p>
+    @enderror
     <hr>
     <h3>Danh sách thể loại</h3>
     @foreach($categories as $category)

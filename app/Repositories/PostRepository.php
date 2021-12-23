@@ -21,17 +21,20 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
 
     public function update($id, $request)
     {
-        // TODO: Implement update() method.
+        $data = $request->only("title","content", "user_id");
+        $post = Post::findOrFail($id);
+        $post -> update($data);
+        $post ->categories()->sync($request->category);
     }
 
-    public function getCategoryOfPost($postId)
-    {
-        $myCategories = [];
-        $categories = DB::table('category_post')->where('post_id',$postId)->get();
-        foreach ($categories as $category){
-            $myCategories[] = $category->category->id;
-        }
-        return $myCategories;
-    }
+//    public function getCategoryOfPost($postId)
+//    {
+//        $myCategories = [];
+//        $categories = DB::table('category_post')->where('post_id',$postId)->get();
+//        foreach ($categories as $category){
+//            $myCategories[] = $category->category->id;
+//        }
+//        return $myCategories;
+//    }
 
 }

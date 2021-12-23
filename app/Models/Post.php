@@ -20,4 +20,14 @@ class Post extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function checkCategory($categoryId)
+    {
+        foreach ($this->categories as $category){
+            if ($category->id == $categoryId){
+                return true;
+            }
+        }
+        return false;
+    }
 }
